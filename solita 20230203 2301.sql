@@ -1,0 +1,86 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.27
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema solita
+--
+
+CREATE DATABASE IF NOT EXISTS solita;
+USE solita;
+
+--
+-- Definition of table `journey_data`
+--
+
+DROP TABLE IF EXISTS `journey_data`;
+CREATE TABLE `journey_data` (
+  `DEPARTURE_DATE` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `RETURN_DATE` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `DEPARTURE_STATION_ID` int(10) unsigned NOT NULL,
+  `DEPARTURE_STATION_NAME` varchar(70) NOT NULL,
+  `RETURN_STATION_ID` int(10) unsigned NOT NULL,
+  `RETURN_STATION_NAME` varchar(70) NOT NULL,
+  `COVERED_DISTANCE` int(10) unsigned NOT NULL,
+  `DURATION` int(10) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `journey_data`
+--
+
+/*!40000 ALTER TABLE `journey_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `journey_data` ENABLE KEYS */;
+
+
+--
+-- Definition of table `stations`
+--
+
+DROP TABLE IF EXISTS `stations`;
+CREATE TABLE `stations` (
+  `FID` int(10) unsigned NOT NULL,
+  `ID` int(10) unsigned NOT NULL,
+  `NIMI` varchar(70) NOT NULL,
+  `NAMN` varchar(70) NOT NULL,
+  `NAME` varchar(70) NOT NULL,
+  `OSOITE` varchar(70) NOT NULL,
+  `ADRESS` varchar(70) NOT NULL,
+  `KAUPUNKI` varchar(70) NOT NULL,
+  `STAD` varchar(70) NOT NULL,
+  `OPERAATTOR` varchar(70) NOT NULL,
+  `KAPASITEET` int(10) unsigned NOT NULL,
+  `X` double NOT NULL,
+  `Y` double NOT NULL,
+  PRIMARY KEY (`FID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `stations`
+--
+
+/*!40000 ALTER TABLE `stations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stations` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,0 +1,25 @@
+#welcome {
+	color : #3798e2;
+	font-family: 'Great Vibes', 'Book Antiqua', Palatino, serif;
+	font-size: 200px;
+	line-height: 200px;
+	-o-object-fit: cover;
+	object-fit: cover;
+	text-align: center;
+}
+
+.buttons {
+	width: 150px;
+    height: 90px;
+    font-size: 30px;
+    border: 3px solid;
+    border-radius: 12px;
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+    font-family: consolas, monospace;
+}
+
+#container {
+	text-align: center;
+}
