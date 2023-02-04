@@ -425,20 +425,6 @@ public class BinaryTree<K> extends AbstractTree<K>
 	}
 	
 	@Override
-	public K select(int index)
-	{
-		return null;
-		//TODO due to missing critical data we cannot implement this
-	}
-	
-	@Override
-	public int getIndex(K key)
-	{
-		return -1;
-		//TODO due to missing critical data we cannot implement this
-	}
-	
-	@Override
 	public void preOrderDisplay(Consumer<? super K> action)
 	{
 		Objects.requireNonNull(action);

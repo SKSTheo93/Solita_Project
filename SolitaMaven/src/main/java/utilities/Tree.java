@@ -19,8 +19,6 @@ public interface Tree<K> extends DoubleIterable<K>
 	public abstract int height();
 	public abstract int balanceFactor();
 	public abstract K getTreeRoot();
-	public abstract K select(int index);
-	public abstract int getIndex(K key);
 	
 	public abstract void preOrderDisplay(Consumer<? super K> action);
 	public abstract void inOrderDisplay(Consumer<? super K> action);
