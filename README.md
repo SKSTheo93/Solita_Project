@@ -27,7 +27,8 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 9) Create a new Maven Project. Right click -> New -> Project... -> Maven -> Maven Project and click next -> click next again -> From the Catalog choose internal and select maven-archetype-webapp. I used the 1.0 version. Click next -> The artifact Id is the name of your project. You can also input a different name for the group id but i left it as it is. Click finish. Now Eclipse well start downloading the necessary files. At some point it will stop because it is waiting for user input. Just press enter without writing anything. The project has been created successfully.
 10) Import the SolitaMaven Project. Right click at the newly created maven project -> import -> General -> File System -> Choose SolitaMaven Project and tick everything. Click Finish.
 11) Now you have to install a server. I used the apache tomcat version 10 server which you can find in the internet or via eclipse (which i did via eclipse). In the main folder of the repository there are tomcat servers. Instead of downloading from eclipse you can use these but they are exactly the same. Go to your project -> properties -> target runtimes -> create new server -> from apache folder choose tomcat version 10.1. Press the download and install button, accept the terms and finish. Now choose a location for your apache tomcat server. Afterwards tick newly server you created apache tomcat servet. Click the apply and close button. Now you can run the websites in your server.
-12) In the pom.xml files i added these depedencies: 
+12) In the pom.xml files i added these depedencies:
+
  <dependency>
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>javax.servlet-api</artifactId>
@@ -55,6 +56,7 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
  
 the json-simple depenecy was not necessary in the end but i put just in case
 13) Also i added in the xml this plugin because the project could not work due to an erroor. This plugin fixed the issue.
+
  <pluginManagement>
 	  <plugins>
 		  <plugin>
