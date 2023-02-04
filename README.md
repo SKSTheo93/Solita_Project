@@ -9,13 +9,13 @@ Java loads csv files into a mysql database, it fetches data from the database an
 I used the Eclipse Editor. I created a Maven project which uses jsp technologgy and through a tomcat apache server the webpages are loading.
 
 To anyone who is curious about the basics of using Java, mysql, jsp, html, css and javascript and how can be connected together, feel free to download the files.
-Hovewer there a a few steps to do (like downloading other stuff. But it's quite easy... i think... XD)
+Hovewer there a few steps to do (like downloading other stuff. But it's quite easy... i think... XD)
 
 1) Download SolitaMaven, Tomcat and MySql folders. 
 2) Download Oracle JDK from here: https://www.oracle.com/java/technologies/downloads/. I always prefer the executable file. Then install it.
 3) Download Eclipse IDE for Enterprise Java and Web Developers from here: https://www.eclipse.org/downloads/packages/. Then unzip it and the it is ready for use.
-4) Install mysql. I used version 5.5.27 version. Yes, i know... it is quite old... Remember to set your username to root and password to root or else the project will not work. Then  also instal mysql qui tools (there are to msi files in the MySQL Folder)
-5) Afterwards open mysql query browser using root as username and password. Go to File->open script and choose the 20230203 2301.sql file which is located in the MySQL folder. Then run the script (it the green button with the thunder icon). Your Database is ready.
+4) Install mysql. I used version 5.5.27 version. Yes, i know... it is quite old... Remember to set your username to root and password to root or else the project will not work. Then  also install mysql gui tools (there are two msi files in the MySQL Folder)
+5) Afterwards open mysql query browser using root as username and password. Go to File->open script and choose the 20230203 2301.sql file which is located in the MySQL folder. Then run the script (it is the green button with the thunder icon). Your Database is ready.
 6) Download and install Maven (you need it in order to add mysql.jar file as an dependecy in the pom.xml file). I used this guide here: https://phoenixnap.com/kb/install-maven-windows
 7) Install the mysql.jar file (which is located at the MySQL folder) using the maven plugin installer. I also uses this guide here: https://testingtools.co/maven/steps-to-add-external-jar-to-local-maven-repository/ . For those who are programming in Java using Eclipse might be wondering why not just add mysql.jar file as an external library (right click on your project -> properties -> java Path File -> add external library) which is a logical conclusion. However that is not how maven projects works unfortunatelly. You have to add external jar files as a depedency using the pom.xml file. Due to mysql.jar file does not exist in the Maven repository you have to install it manually. Just in case i will inform you the the original file name of mysql.jar file was mysql-connector-java-5.1.21-bin.jar. I changed the name so i can add it more easilly. But why do we have to add this specific jar file? Well because it's the Driver which connects our database with Java. From Java then we can fetch information by writing your everyday sql statements as a String. For more information about which classes and interfaces we will use, please read these:
 
@@ -62,7 +62,7 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 			<version>1.1.1</version>
 		</dependency>
  
-the json-simple depenecy was not necessary in the end but i put just in case i wanted to use. 
+the json-simple dependencies were not necessary in the end but i put them here just in case . 
 
 
 13) Also i added in the pom.xml file this plugin because the project could not work due to an error. This plugin fixed the issue.
@@ -77,4 +77,6 @@ the json-simple depenecy was not necessary in the end but i put just in case i w
 			</plugins>
 		</pluginManagement>
 		
-14) Now 
+14) Now go to your project and go to the folder src/main/webapp and then you will find the jsp, js and css files. The main page is the index.jsp. Before you run it keep in mind that the path of css file in the index.jsp are fixed and they aren't using their relative path. The csv files are in the src/main/recourses folder. For example let's say you have the dataset in the documents folder. The absolute path is C:/Users/User/Documents/dataset.csv. At lines 24 and 25 of index.jsp file change the absolute paths.
+15) Now you can run the project. Right click somewhere in the index.jsp file -> Run as -> Run on server. In this dialog you can choose you server. Because we have already create a tomcat apache server normally you will see that you can chose the server. Click finish. If you presses next you will also have to choose the project you want to run. Click finish again.
+16) 
