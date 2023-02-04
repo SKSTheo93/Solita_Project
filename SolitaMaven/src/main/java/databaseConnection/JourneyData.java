@@ -1,5 +1,8 @@
 package databaseConnection;
 
+/*
+	A simple class which will be used saving the data from the query for the journey_data table
+*/
 public class JourneyData extends Object implements Comparable<JourneyData>{
 	
 	private int id;

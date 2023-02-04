@@ -40,7 +40,7 @@ public abstract class Connector extends Object {
 		connection.close();
 	}
 	
-	/* The function  fetches data from the journey_data table using Rowsets. The queris inside are using the limit command
+	/* The function  fetches data from the journey_data table using Rowsets. The queries inside are using the limit command
 	 * which limis the recotds. The offset parameter is the starting record and the records parameter is
 	 * is quntity of the records it will fetch. The JdbcRowSet is being used for fetching data*/
 	public static AVLTree<JourneyData> fetchQueryfromJourneyData(int offset, int records) {
@@ -92,7 +92,7 @@ public abstract class Connector extends Object {
 		return tree;
 	}
 	
-	/* The function  fetches data from the stations table using Rowsets. The queris inside are using the limit command
+	/* The function  fetches data from the stations table using Rowsets. The queries inside are using the limit command
 	 * which limis the recotds. The offset parameter is the starting record and the records parameter is
 	 * is quntity of the records it will fetch. The JdbcRowSet is being used for fetching data*/
 	public static AVLTree<Station> fetchQueryfromStations(int offset, int records) {
@@ -182,8 +182,9 @@ public abstract class Connector extends Object {
 	
 	/*
 	 the main function that will tokenize the line.
-	 The delimeter is comma(,). However when it finds prhases into quotes (" "),
-	 the function will ingnore the delimeter.
+	 The delimeter is comma(,). However when it finds phrases into quotes (" "),
+	 the function will ingnore the delimeter. When a quote is found, ignoreMode (which is a boolean variable)
+	 is being activated until it founds the ending quote. In that case ignoreMode will be deactivated. 
 	 */
 	private static ArrayList<String> tokenize(String line) {
 		ArrayList<String> list = new ArrayList<>();
@@ -239,7 +240,7 @@ public abstract class Connector extends Object {
 				
 				/* if it is in scrict mode and the line is parsable, the data will be inserted into the database.
 				 * The queries are using question marks (?). Using the setObject function java can determine the type of the data
-				 * and the passing  it to the database */
+				 * and the passing it to the database */
 				if(parsable) {					
 					for(int x = 0; x < tokens.size(); x++)
 						statement.setObject(x + 1, tokens.get(x));
@@ -263,8 +264,11 @@ public abstract class Connector extends Object {
 		1. the path of the file
 		2. the insert into a table query
 		3. This is a boolean variable which defines is the parsing od the file will be strict or not
-		if strictMode is activated then the parser will check for empty fields. if it finds
-		them they will not inserted it into the database. Using strict mode, the data gets validated*/
+		if strictMode is activated then the parser will check for empty fields. If it finds
+		them they will not be inserted it into the database. Using strict mode, the data gets validated.
+		We can load the whole csv file of course but it would take a lot of time to load. For the
+		purpose of demonstrations I decided to fetch the first 8000 records from each csv file.
+	*/
 	public static void loadCSV(String filepath, String query, boolean strictMode) {
 		try {
 			File file = new File(filepath);
@@ -275,7 +279,7 @@ public abstract class Connector extends Object {
 			int index = 0;
 			String line = null;
 			
-			in.readLine(); // ignores the first line
+			in.readLine(); // ignores the first line. The first line of the csv file are the names of the fields
 			/* the while loop will terminated when if the records are 8000 or when the end of file has been reached */
 			while(index < records && (line = in.readLine()) != null) {
 				lines[index++] = line;

@@ -1,5 +1,9 @@
 package databaseConnection;
 
+
+/*
+A simple class that it will be used for the qury of the single station statement
+*/
 public class SingleStation extends Object {
 	
 	private String name;

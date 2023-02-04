@@ -1,5 +1,8 @@
 package databaseConnection;
 
+/*
+	A simple class that will be used to save the data from Station dataset query
+*/
 public class Station extends Object implements Comparable<Station> {
 
 	private int id;
