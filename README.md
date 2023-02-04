@@ -55,7 +55,7 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 	</dependency>
  
 the json-simple depenecy was not necessary in the end but i put just in case
-13) Also i added in the xml this plugin because the project could not work due to an erroor. This plugin fixed the issue.
+13. Also i added in the xml this plugin because the project could not work due to an erroor. This plugin fixed the issue.
 
  <pluginManagement>
 	  <plugins>
