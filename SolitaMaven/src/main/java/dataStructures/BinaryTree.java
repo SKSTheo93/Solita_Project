@@ -1,3 +1,13 @@
+/*The BinaryTree class extends the AbstractTree class
+That means that the methods which AbstractTree class implements from
+the Tree interface must be implemented here.
+A little detail: instead of null we are using A NULL_GUARD node.
+A NULL_GUARD node it's a node with the same fields of a normal node but it acts
+as a null. When we want to indicate that a node is null, we are using the NULL_GUARD instead.
+This help us to implement more easily the functions without having to check for border conditions
+all the time. In addition most of the methods are protected instead of private because the AVLTree
+which extends BinaryTree will need to call these methods in order to work.*/
+
 package dataStructures;
 
 import java.util.Objects;
@@ -9,6 +19,7 @@ import utilities.DoubleIterator;
 @SuppressWarnings("unchecked")
 public class BinaryTree<K> extends AbstractTree<K>
 {
+	/* A simple inner class with getter and setters which desribes the node*/
 	protected class TreeNode extends Object
 	{
 		private TreeNode parent;
@@ -104,6 +115,7 @@ public class BinaryTree<K> extends AbstractTree<K>
 		size = 0;
 	}
 	
+	/* this method must mandatory to be implemented. Otherwise the tree will have undefined behaviours */
 	@Override
 	protected void initializeTree()
 	{
@@ -116,6 +128,8 @@ public class BinaryTree<K> extends AbstractTree<K>
 		size = 0;
 	}
 	
+	/* we implemented the add function as a protected because BinaryTree add TreeNodes and
+	AVLTree add AVLNodes. If we add into the AVLTree a TreeNode a ClassCastException will be thrown. */
 	protected TreeNode add(TreeNode node)
 	{
 		TreeNode root = this.root;
@@ -255,6 +269,9 @@ public class BinaryTree<K> extends AbstractTree<K>
 		root = root.parent = root.left = root.right = null;
 	}
 	
+	/* we created this method for testing purposes to demostrate how to
+	implement a function searching for the height of the tree without initially having
+	the height information of every node */
 	protected int height(TreeNode root)
 	{
 		if(root == NULL_GUARD)
@@ -272,6 +289,9 @@ public class BinaryTree<K> extends AbstractTree<K>
 		return (height(root.right) + 1) - (height(root.left) + 1);
 	}
 	
+	/* In the orderDisplay methods we have to pass an object of Consumer interface.
+	We can display the information we want. Also since in the Consumer Interface
+	exists only one function, labda expressions are supported */
 	private void preOrderDisplay(TreeNode root, Consumer<? super K> action)
 	{
 		if(root == NULL_GUARD)
@@ -304,6 +324,9 @@ public class BinaryTree<K> extends AbstractTree<K>
 		super();
 	}
 	
+	/*The add(K key) methods calls the add(TreeNode node) method. In
+	case the key does not support comparisons a ClassNotComparableException object will
+	be thrown */
 	@Override
 	public boolean add(K key)
 	{
@@ -424,6 +447,8 @@ public class BinaryTree<K> extends AbstractTree<K>
 		return root.key;
 	}
 	
+	/* Every OrderDisplay method checks if the action parameter of type Consumer
+	is null or not. In case it is null, a NullPointerException will be thrown*/
 	@Override
 	public void preOrderDisplay(Consumer<? super K> action)
 	{

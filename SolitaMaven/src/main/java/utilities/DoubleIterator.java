@@ -1,3 +1,6 @@
+/*An interface that extends the Interface Iterator<E>
+we added new abstract methods */
+
 package utilities;
 
 import java.util.Iterator;

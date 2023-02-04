@@ -1,3 +1,6 @@
+/* This is an interface that describes the methods
+we need to implement */
+
 package utilities;
 
 import java.util.function.Consumer;
