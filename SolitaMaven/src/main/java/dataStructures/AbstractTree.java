@@ -6,7 +6,7 @@ public abstract class AbstractTree<K> extends Object implements Tree<K>
 {
 	public AbstractTree()
 	{
-		//Everytime whene we create a tree, the initializeTree function is called from the child trees
+		//Everytime when we create a tree, the initializeTree function is called from the child trees
 		initializeTree();
 	}
 	

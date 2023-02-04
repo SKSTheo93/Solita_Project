@@ -22,6 +22,8 @@ import java.sql.ResultSetMetaData;
 
 
 public abstract class Connector extends Object {
+	
+	/* we have define the neccesary information for our connection with the database */
 	public static final String DRIVER = "jdbc:mysql://";
 	public static final String HOST = "localhost";
 	public static final String PORT = "3306";
@@ -55,21 +57,32 @@ public abstract class Connector extends Object {
 		JourneyData jd = null;
 		int id = 1;
 
+		/* The method inside the try catch statement can throw SQLExceptions and they are mandatory to catch them */
 		try {
+
+			/* First we will a RowSetFactory object using the newFactory() method from RowSetProvider class 
+			Then we create an JdbcRowSe Object using the factory object*/
 			RowSetFactory factory = null;
 			factory = RowSetProvider.newFactory();
 			JdbcRowSet rowSet = factory.createJdbcRowSet();
 			
+			/* Here we set the necessary information for our database */
 			rowSet.setUrl(URL);
 			rowSet.setUsername(Connector.USERNAME);
 			rowSet.setPassword(Connector.PASSWORD);
 			
+			/* Here we set the sql statement which will be executed
+			In the query string we have 2 question  marks.
+			Through the method rowSet.setInt() these question marks will be initialized
+			with the values from offset and records. The we will execute the query */
 			rowSet.setCommand(query);
 			rowSet.setInt(1,offset);
 			rowSet.setInt(2,records);
 			rowSet.execute();
 			
-			/* We don't want records that the coveredDistance is lower than 10 meters and duration lower than 10 seconds*/
+			/* We don't want records where the coveredDistance is lower than 10 meters and duration lower than 10 seconds.
+			Also a rowset starts right before the first record. What rowSet.next() method do is to move the pointer to the
+			first record and return true if there are more records or false if there aren't.*/
 			while(rowSet.next()) {
 				int coveredDistance = rowSet.getInt(3);
 				int duration = rowSet.getInt(4);
@@ -108,14 +121,22 @@ public abstract class Connector extends Object {
 		int id = 1;
 
 		try {
+
+			/* First we will a RowSetFactory object using the newFactory() method from RowSetProvider class 
+			Then we create an JdbcRowSe Object using the factory object*/
 			RowSetFactory factory = null;
 			factory = RowSetProvider.newFactory();
 			JdbcRowSet rowSet = factory.createJdbcRowSet();
 			
+			/* Here we set the necessary information for our database */
 			rowSet.setUrl(URL);
 			rowSet.setUsername(Connector.USERNAME);
 			rowSet.setPassword(Connector.PASSWORD);
 			
+			/* Here we set the sql statement which will be executed
+			In the query string we have 2 question  marks.
+			Through the method rowSet.setInt() these question marks will be initialized
+			with the values from offset and records. The we will execute the query */
 			rowSet.setCommand(query);
 			rowSet.setInt(1,offset);
 			rowSet.setInt(2,records);
@@ -138,46 +159,6 @@ public abstract class Connector extends Object {
 		}
 		
 		return tree;
-	}
-	
-	public static String getStringQuery(String station) {
-		String url = Connector.DRIVER + Connector.HOST + ":" + Connector.PORT + "/" + Connector.DATABASE;
-		String query = "select * from stations where NIMI = " + station;
-		StringBuilder sb = new StringBuilder();
-		
-		try {
-		
-			RowSetFactory factory = null;
-			factory = RowSetProvider.newFactory();
-			JdbcRowSet rowSet = factory.createJdbcRowSet();
-			
-			rowSet.setUrl(url);
-			rowSet.setUsername(Connector.USERNAME);
-			rowSet.setPassword(Connector.PASSWORD);
-			
-			rowSet.setCommand(query);
-			rowSet.execute();
-			
-			ResultSetMetaData metaData = rowSet.getMetaData();
-			int cols = metaData.getColumnCount();
-			
-			for(int i = 1; i <= cols; i++)
-				sb.append(String.format("%-30s", metaData.getColumnName(i)));
-			sb.append("<br>");
-			
-			while(rowSet.next()) {
-				for(int i = 1; i <= cols; i++)
-					sb.append(String.format("%-30s", rowSet.getObject(i)));
-				sb.append("<br>");
-			}
-			
-			rowSet.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		//System.out.println("i'm here");
-		return sb.toString();
 	}
 	
 	/*
@@ -263,9 +244,9 @@ public abstract class Connector extends Object {
 	/*The Connector.loadCSV has 3 parameteres:
 		1. the path of the file
 		2. the insert into a table query
-		3. This is a boolean variable which defines is the parsing od the file will be strict or not
-		if strictMode is activated then the parser will check for empty fields. If it finds
-		them they will not be inserted it into the database. Using strict mode, the data gets validated.
+		3. This is a boolean variable which determines if the parsing of the file will be strict or not.
+		If strictMode is activated then the parser will check for empty fields. If it finds
+		them, then they will not be inserted it into the database. Using strict mode, the data gets validated.
 		We can load the whole csv file of course but it would take a lot of time to load. For the
 		purpose of demonstrations I decided to fetch the first 8000 records from each csv file.
 	*/

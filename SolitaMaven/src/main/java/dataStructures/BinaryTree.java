@@ -1,7 +1,7 @@
 /*The BinaryTree class extends the AbstractTree class
 That means that the methods which AbstractTree class implements from
 the Tree interface must be implemented here.
-A little detail: instead of null we are using A NULL_GUARD node.
+A little detail: instead of null I am using A NULL_GUARD node.
 A NULL_GUARD node it's a node with the same fields of a normal node but it acts
 as a null. When we want to indicate that a node is null, we are using the NULL_GUARD instead.
 This help us to implement more easily the functions without having to check for border conditions
@@ -128,8 +128,8 @@ public class BinaryTree<K> extends AbstractTree<K>
 		size = 0;
 	}
 	
-	/* we implemented the add function as a protected because BinaryTree add TreeNodes and
-	AVLTree add AVLNodes. If we add into the AVLTree a TreeNode a ClassCastException will be thrown. */
+	/* I implemented the add function as protected because BinaryTree add TreeNode objects and
+	AVLTree adds AVLNode objects. If we add into the AVLTree a TreeNode object, a ClassCastException will be thrown. */
 	protected TreeNode add(TreeNode node)
 	{
 		TreeNode root = this.root;
@@ -269,7 +269,7 @@ public class BinaryTree<K> extends AbstractTree<K>
 		root = root.parent = root.left = root.right = null;
 	}
 	
-	/* we created this method for testing purposes to demostrate how to
+	/*I created this method for testing purposes to demostrate how to
 	implement a function searching for the height of the tree without initially having
 	the height information of every node */
 	protected int height(TreeNode root)
@@ -290,7 +290,7 @@ public class BinaryTree<K> extends AbstractTree<K>
 	}
 	
 	/* In the orderDisplay methods we have to pass an object of Consumer interface.
-	We can display the information we want. Also since in the Consumer Interface
+	We can display the information however we want. Also since in the Consumer Interface
 	exists only one function, labda expressions are supported */
 	private void preOrderDisplay(TreeNode root, Consumer<? super K> action)
 	{

@@ -1,9 +1,18 @@
+/* The AVLTree Class extends the BinaryTree class.
+NULL_GUARD is being used here too. */
+
 package dataStructures;
 
 import exceptions.ClassNotComparableException;
 
 public class AVLTree<K> extends BinaryTree<K>
 {
+	/* A simple class with getter and setters which extends BinaryTree.TreeNode class.
+	You can see that we have overriden the getParent, getLeft and getRight methods because
+	they were returning TreeNode objects instead of  AVLNode objects. Cast would be troublesome and
+	the code would not be clear. So we override these methods in order to return AVLNode objects.
+	ClassCastException will not be thrown because AVLNode objects are also TreeNode objects (Polymorphism
+	is being used here)*/
 	protected class AVLNode extends TreeNode
 	{
 		private int height;
@@ -51,6 +60,8 @@ public class AVLTree<K> extends BinaryTree<K>
 	
 	private AVLNode NULL_GUARD;
 	
+	/*setNULL_GUARD() was reimplemented because the NULL_GUARD fields from AVLTree and BinaryTree
+	must both be initialized */
 	@Override
 	protected void setNULL_GUARD(TreeNode NULL_GUARD)
 	{
@@ -58,18 +69,21 @@ public class AVLTree<K> extends BinaryTree<K>
 		this.NULL_GUARD = (AVLNode)NULL_GUARD;
 	}
 	
+	/* the getNULL_GUARD() methods has been overriden in order to be returned as an AVLNode object */
 	@Override
 	protected AVLNode getNULL_GUARD()
 	{
 		return (AVLNode)super.getNULL_GUARD();
 	}
 	
+	/* the getRoot() methods has been overriden in order to be returned as an AVLNode object */
 	@Override
 	protected AVLNode getRoot()
 	{
 		return (AVLNode)super.getRoot();
 	}
 	
+	/* the same as in the BinaryTree class. initializeTree() method here is madatory to be implemented */
 	@Override
 	protected void initializeTree()
 	{
@@ -197,6 +211,9 @@ public class AVLTree<K> extends BinaryTree<K>
 		super();
 	}
 	
+	/* Here in the add(K key method) the we are adding AVLNode objects instead of TreeNode objects.
+	CastCastException would be thrown cause AVLNode objects have an extra information, the height of each node, which
+	BinaryTree objects don't have. Also we are using the autoBalance function in order to balance the tree */
 	@Override
 	public boolean add(K key)
 	{
