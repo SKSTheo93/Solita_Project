@@ -19,11 +19,16 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 6) Download and install Maven (you need it in order to add mysql.jar file as an dependecy in the pom.xml file). I used this guide here: https://phoenixnap.com/kb/install-maven-windows
 7) Install the mysql.jar file (which is located at the MySQL folder) using the maven plugin installer. I also uses this guide here: https://testingtools.co/maven/steps-to-add-external-jar-to-local-maven-repository/ . For those who are programming in Java using Eclipse might be wondering why not just add mysql.jar file as an external library (right click on your project -> properties -> java Path File -> add external library) which is a logical conclusion. However that is not how maven projects works unfortunatelly. You have to add external jar files as a depedency using the pom.xml file. Due to mysql.jar file does not exist in the Maven repository you have to install it manually. Just in case i will inform you the the original file name of mysql.jar file was mysql-connector-java-5.1.21-bin.jar. I changed the name so i can add it more easilly. But why do we have to add this specific jar file? Well because it's the Driver which connects our database with Java. From Java then we can fetch information by writing your everyday sql statements as a String. For more information about which classes and interfaces we will use, please read these:
 
- https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html ,
- https://docs.oracle.com/javase/7/docs/api/javax/sql/RowSet.html ,
- https://docs.oracle.com/javase/7/docs/api/javax/sql/rowset/RowSetProvider.html ,
- https://docs.oracle.com/javase/7/docs/api/javax/sql/rowset/JdbcRowSet.html ,
+ https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html
+ 
+ https://docs.oracle.com/javase/7/docs/api/javax/sql/RowSet.html
+ 
+ https://docs.oracle.com/javase/7/docs/api/javax/sql/rowset/RowSetProvider.html
+ 
+ https://docs.oracle.com/javase/7/docs/api/javax/sql/rowset/JdbcRowSet.html
+ 
  https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSetMetaData.html 
+ 
  
 8) Open Eclipse and create a new workspace or choose an existing one
 9) Create a new Maven Project. Right click -> New -> Project... -> Maven -> Maven Project and click next -> click next again -> From the Catalog choose internal and select maven-archetype-webapp. I used the 1.0 version. Click next -> The artifact Id is the name of your project. You can also input a different name for the group id but i left it as it is. Click finish. Now Eclipse well start downloading the necessary files. At some point it will stop because it is waiting for user input. Just press enter without writing anything. The project has been created successfully.
