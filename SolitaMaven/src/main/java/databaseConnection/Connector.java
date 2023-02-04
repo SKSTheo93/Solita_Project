@@ -280,7 +280,7 @@ public abstract class Connector extends Object {
 			String line = null;
 			
 			in.readLine(); // ignores the first line. The first line of the csv file are the names of the fields
-			/* the while loop will terminated when if the records are 8000 or when the end of file has been reached */
+			/* the while loop will terminated when the records are 8000 or when the end of file has been reached */
 			while(index < records && (line = in.readLine()) != null) {
 				lines[index++] = line;
 			}
