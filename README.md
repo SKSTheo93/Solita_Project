@@ -29,24 +29,31 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 11) Now you have to install a server. I used the apache tomcat version 10 server which you can find in the internet or via eclipse (which i did via eclipse). In the main folder of the repository there are tomcat servers. Instead of downloading from eclipse you can use these but they are exactly the same. Go to your project -> properties -> target runtimes -> create new server -> from apache folder choose tomcat version 10.1. Press the download and install button, accept the terms and finish. Now choose a location for your apache tomcat server. Afterwards tick newly server you created apache tomcat servet. Click the apply and close button. Now you can run the websites in your server.
 12) In the pom.xml files i added these depedencies:
 
+   
+		<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>3.1.0</version>
+	    <scope>test</scope>
+    		</dependency>
     
-	<dependency>
+		<dependency>
     	<groupId>mysql</groupId>
     	<artifactId>mysql</artifactId>
     	<version>1.0</version>
-    </dependency>
+    	</dependency>
     
-    <dependency>
+    	<dependency>
 	    <groupId>com.github.cliftonlabs</groupId>
 	    <artifactId>json-simple</artifactId>
 	    <version>4.0.1</version>
-	</dependency>
+		</dependency>
 	
-	<dependency>
+		<dependency>
 		<groupId>com.googlecode.json-simple</groupId>
 		<artifactId>json-simple</artifactId>
 		<version>1.1.1</version>
-	</dependency>
+		</dependency>
  
 the json-simple depenecy was not necessary in the end but i put just in case.
 13) Also i added in the xml this plugin because the project could not work due to an erroor. This plugin fixed the issue.
