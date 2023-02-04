@@ -31,28 +31,28 @@ Hovewer there a a few steps to do (like downloading other stuff. But it's quite 
 
    
 		<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>3.1.0</version>
-	    <scope>test</scope>
+	    		<groupId>javax.servlet</groupId>
+	    		<artifactId>javax.servlet-api</artifactId>
+	    		<version>3.1.0</version>
+	    		<scope>test</scope>
     		</dependency>
     
 		<dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql</artifactId>
-    	<version>1.0</version>
-    	</dependency>
+    			<groupId>mysql</groupId>
+    			<artifactId>mysql</artifactId>
+    			<version>1.0</version>
+    		</dependency>
     
-    	<dependency>
-	    <groupId>com.github.cliftonlabs</groupId>
-	    <artifactId>json-simple</artifactId>
-	    <version>4.0.1</version>
+    		<dependency>
+	    		<groupId>com.github.cliftonlabs</groupId>
+	    		<artifactId>json-simple</artifactId>
+	    		<version>4.0.1</version>
 		</dependency>
 	
 		<dependency>
-		<groupId>com.googlecode.json-simple</groupId>
-		<artifactId>json-simple</artifactId>
-		<version>1.1.1</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
  
 the json-simple depenecy was not necessary in the end but i put just in case.
